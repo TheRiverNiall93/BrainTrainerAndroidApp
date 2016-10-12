@@ -63,7 +63,7 @@ public class BrainTrainer {
         }
 
         numOfQuestions++;
-        return answer == currentCorrectAnswer;
+        return isRight;
     }
 
     public String getCurrentScoreText() {
