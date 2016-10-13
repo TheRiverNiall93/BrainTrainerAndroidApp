@@ -3,7 +3,6 @@ package com.example.niall.braintrainer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
@@ -15,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView timerText;
     private TextView sumText;
     private TextView scoreText;
+    private TextView outcomeText;
     private GridLayout answerGrid;
 
     private int timeRemaining = 30;
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         timerText = (TextView) findViewById(R.id.timerText);
         sumText = (TextView) findViewById(R.id.sumText);
         scoreText = (TextView) findViewById(R.id.scoreText);
+        outcomeText = (TextView) findViewById(R.id.outcomeText);
         answerGrid = (GridLayout) findViewById(R.id.gridLayout);
     }
 
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-
+                outcomeText.setText("Your score: " + brainTrainer.getCurrentScoreText());
             }
         }.start();
     }
@@ -101,10 +102,9 @@ public class MainActivity extends AppCompatActivity {
         int selectedAnswer = Integer.parseInt(view.getTag().toString());
 
         if (brainTrainer.isCorrectAnswerSubmitted(selectedAnswer)) {
-            //TODO Show either correct or incorrect message!
-            Log.i("Correct!", "Correct answer picked");
+            outcomeText.setText("Correct!");
         } else {
-            Log.i("Incorrect!", "Wrong answer picked");
+            outcomeText.setText("Wrong!");
         }
 
         updateScoreText();
