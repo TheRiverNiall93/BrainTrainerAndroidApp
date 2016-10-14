@@ -10,56 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.niall.braintrainer.MainActivity">
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/gridLayout"
-        android:columnCount="2"
-        android:rowCount="2"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true">
-
-        <Button
-            android:text="10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/answer1"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:onClick="answerSelected"
-            android:textSize="30dp" />
-
-        <Button
-            android:text="10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/answer2"
-            android:layout_column="1"
-            android:layout_row="0"
-            android:onClick="answerSelected"
-            android:textSize="30dp"/>
-
-        <Button
-            android:text="10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/answer3"
-            android:layout_column="0"
-            android:layout_row="1"
-            android:onClick="answerSelected"
-            android:textSize="30dp"/>
-
-        <Button
-            android:text="10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/answer4"
-            android:layout_column="1"
-            android:layout_row="1"
-            android:onClick="answerSelected"
-            android:textSize="30dp"/>
-    </GridLayout>
-
     <TextView
         android:text="30s"
         android:layout_width="wrap_content"
@@ -105,23 +55,79 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="64dp" />
 
-    <Button
-        android:text="Play Again"
+    <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/gridLayout"
+        android:columnCount="2"
+        android:rowCount="2"
+        android:layout_below="@+id/sumText"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="26dp"
-        android:id="@+id/playAgainButton"
-        android:onClick="playAgain" />
+        android:layout_marginTop="62dp">
+
+        <Button
+            android:text="10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/answer1"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:onClick="answerSelected"
+            android:background="#4e33ff"
+            android:textSize="50dp" />
+
+        <Button
+            android:text="10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/answer2"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:onClick="answerSelected"
+            android:background="#66ff78"
+            android:textSize="50dp" />
+
+        <Button
+            android:text="10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/answer3"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:onClick="answerSelected"
+            android:textSize="50dp"
+            android:background="#d839e4" />
+
+        <Button
+            android:text="10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/answer4"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:onClick="answerSelected"
+            android:background="#56f9ff"
+            android:textSize="50dp" />
+    </GridLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/outcomeText"
         android:textSize="35dp"
+        android:layout_marginBottom="49dp"
         android:layout_above="@+id/playAgainButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="23dp" />
+        android:textAlignment="center" />
+
+    <Button
+        android:text="Play Again"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/playAgainButton"
+        android:onClick="playAgain"
+        android:textAlignment="center"
+        android:layout_below="@+id/startButton"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
