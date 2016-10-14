@@ -6,17 +6,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button startButton;
     private Button playAgainButton;
+
     private TextView timerText;
     private TextView sumText;
     private TextView scoreText;
     private TextView outcomeText;
+
     private GridLayout answerGrid;
+    private RelativeLayout gameRelativeLayout;
 
     private int timeRemaining = 30;
     private BrainTrainer brainTrainer;
@@ -32,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initialiseUi() {
         findViews();
-        setMainGameUiVisibility(View.INVISIBLE);
+        gameRelativeLayout.setVisibility(RelativeLayout.INVISIBLE);
         playAgainButton.setVisibility(View.INVISIBLE);
 
         updateTimerText();
@@ -48,14 +52,8 @@ public class MainActivity extends AppCompatActivity {
         scoreText = (TextView) findViewById(R.id.scoreText);
         outcomeText = (TextView) findViewById(R.id.outcomeText);
 
+        gameRelativeLayout = (RelativeLayout) findViewById(R.id.gameRelativeLayout);
         answerGrid = (GridLayout) findViewById(R.id.gridLayout);
-    }
-
-    private void setMainGameUiVisibility(int visibility) {
-        timerText.setVisibility(visibility);
-        sumText.setVisibility(visibility);
-        scoreText.setVisibility(visibility);
-        answerGrid.setVisibility(visibility);
     }
 
     private void updateTimerText() {
@@ -68,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void startGame(View view) {
         startButton.setVisibility(View.INVISIBLE);
-        setMainGameUiVisibility(View.VISIBLE);
+        gameRelativeLayout.setVisibility(RelativeLayout.VISIBLE);
+
         startTimer();
         setNextQuestion();
     }
