@@ -105,12 +105,23 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="64dp" />
 
+    <Button
+        android:text="Play Again"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:id="@+id/playAgainButton"
+        android:onClick="playAgain" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/startButton"
-        android:layout_centerHorizontal="true"
         android:id="@+id/outcomeText"
-        android:textSize="35dp" />
+        android:textSize="35dp"
+        android:layout_above="@+id/playAgainButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp" />
 
 </RelativeLayout>

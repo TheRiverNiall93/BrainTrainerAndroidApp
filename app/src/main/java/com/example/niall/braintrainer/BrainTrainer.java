@@ -66,6 +66,11 @@ public class BrainTrainer {
         return isRight;
     }
 
+    public void resetGame() {
+        playerScore = 0;
+        numOfQuestions = 0;
+    }
+
     public String getCurrentScoreText() {
         return Integer.toString(playerScore) + "/" + Integer.toString(numOfQuestions);
     }

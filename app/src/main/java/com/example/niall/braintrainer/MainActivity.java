@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private Button startButton;
+    private Button playAgainButton;
     private TextView timerText;
     private TextView sumText;
     private TextView scoreText;
@@ -32,16 +33,21 @@ public class MainActivity extends AppCompatActivity {
     private void initialiseUi() {
         findViews();
         setMainGameUiVisibility(View.INVISIBLE);
+        playAgainButton.setVisibility(View.INVISIBLE);
+
         updateTimerText();
         updateScoreText();
     }
 
     private void findViews() {
         startButton = (Button) findViewById(R.id.startButton);
+        playAgainButton = (Button) findViewById(R.id.playAgainButton);
+
         timerText = (TextView) findViewById(R.id.timerText);
         sumText = (TextView) findViewById(R.id.sumText);
         scoreText = (TextView) findViewById(R.id.scoreText);
         outcomeText = (TextView) findViewById(R.id.outcomeText);
+
         answerGrid = (GridLayout) findViewById(R.id.gridLayout);
     }
 
@@ -78,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 outcomeText.setText("Your score: " + brainTrainer.getCurrentScoreText());
+                playAgainButton.setVisibility(View.VISIBLE);
             }
         }.start();
     }
@@ -88,10 +95,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setAnswerButtonText(Integer[] possibleAnswers) {
-        int numOfPossibleAnswers = answerGrid.getChildCount();
         Button answerButton;
 
-        for (int i = 0; i < numOfPossibleAnswers; i++) {
+        for (int i = 0; i < possibleAnswers.length; i++) {
             answerButton = (Button) answerGrid.getChildAt(i);
             answerButton.setText(Integer.toString(possibleAnswers[i]));
             answerButton.setTag(Integer.toString(possibleAnswers[i]));
@@ -109,5 +115,18 @@ public class MainActivity extends AppCompatActivity {
 
         updateScoreText();
         setNextQuestion();
+    }
+
+    public void playAgain(View view) {
+        brainTrainer.resetGame();
+        timeRemaining = 30;
+
+        updateScoreText();
+        updateTimerText();
+        startTimer();
+        setNextQuestion();
+
+        outcomeText.setText("");
+        playAgainButton.setVisibility(View.INVISIBLE);
     }
 }
