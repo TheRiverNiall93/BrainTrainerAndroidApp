@@ -31,9 +31,12 @@ public class BrainTrainer {
         int nextPossibleAnswer;
 
         for (int i = 1; i < numOfPossibleAnswers; i++) {
-            nextPossibleAnswer = random.nextInt(20) + 1;
+            nextPossibleAnswer = random.nextInt(40) + 1;
+
+            // Keep generating a possible answer, if the current possible answer is already within
+            // the array
             while (possibleAnswersContains(possibleAnswers, nextPossibleAnswer)) {
-                nextPossibleAnswer = random.nextInt(20) + 1;
+                nextPossibleAnswer = random.nextInt(40) + 1;
             }
 
             possibleAnswers[i] = nextPossibleAnswer;
