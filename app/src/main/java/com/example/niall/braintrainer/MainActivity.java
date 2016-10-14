@@ -83,7 +83,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                timeRemaining = 0;
+                updateTimerText();
                 outcomeText.setText("Your score: " + brainTrainer.getCurrentScoreText());
+                setPossibleAnswersEnabledStatus(false);
                 playAgainButton.setVisibility(View.VISIBLE);
             }
         }.start();
@@ -121,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
         brainTrainer.resetGame();
         timeRemaining = 30;
 
+        setPossibleAnswersEnabledStatus(true);
         updateScoreText();
         updateTimerText();
         startTimer();
@@ -128,5 +132,11 @@ public class MainActivity extends AppCompatActivity {
 
         outcomeText.setText("");
         playAgainButton.setVisibility(View.INVISIBLE);
+    }
+
+    private void setPossibleAnswersEnabledStatus(boolean isEnabled) {
+        for (int i = 0; i < answerGrid.getChildCount(); i++) {
+            answerGrid.getChildAt(i).setEnabled(isEnabled);
+        }
     }
 }
